@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Bello Jawad</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    
+    <!-- Internal Stylesheet -->
+    <style>
+        /* ============================================
+           GLOBAL STYLES & ROOT VARIABLES
+           ============================================ */
+        :root {
+            --primary-color: #0078d4;
+            --secondary-color: #1f1f1f;
+            --accent-color: #50e6ff;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --card-shadow: 0 8px 32px rgba(0, 120, 212, 0.15);
+            --smooth-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        /* ============================================
+           MAIN APPLICATION WINDOW CONTAINER
+           ============================================ */
+        .app-window {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            width: 100%;
+            max-width: 1000px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ============================================
+           WINDOW TITLEBAR
+           ============================================ */
+        .window-titlebar {
+            background: linear-gradient(to right, #f3f3f3, #ffffff);
+            border-bottom: 1px solid #e0e0e0;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .titlebar-content {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .control-btn {
+            width: 36px;
+            height: 32px;
+            border: none;
+            background: transparent;
+            color: var(--secondary-color);
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: var(--smooth-transition);
+        }
+
+        .control-btn:hover {
+            background: rgba(0, 0, 0, 0.06);
+        }
+
+        .control-btn.close:hover {
+            background: #e81123;
+            color: white;
+        }
+
+        /* ============================================
+           WINDOW CONTENT
+           ============================================ */
+        .window-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px;
+        }
+
+        .window-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .window-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .window-content::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+        }
+
+        .window-content::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+
+        /* ============================================
+           RESUME HEADER
+           ============================================ */
+        .resume-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .resume-name {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+        }
+
+        .resume-title {
+            font-size: 18px;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .resume-contact {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ============================================
+           SECTION STYLES
+           ============================================ */
+        .resume-section {
+            margin-bottom: 28px;
+        }
+
+        .section-header {
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-header i {
+            font-size: 18px;
+        }
+
+        /* ============================================
+           EDUCATION SECTION
+           ============================================ */
+        .education-item {
+            margin-bottom: 20px;
+            padding: 16px;
+            background: rgba(0, 120, 212, 0.05);
+            border-left: 4px solid var(--primary-color);
+            border-radius: 6px;
+        }
+
+        .degree-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 4px;
+        }
+
+        .institution {
+            font-size: 13px;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .education-meta {
+            font-size: 12px;
+            color: #666;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .education-description {
+            font-size: 13px;
+            color: #555;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           EXPERIENCE SECTION
+           ============================================ */
+        .experience-item {
+            margin-bottom: 20px;
+            padding: 16px;
+            background: rgba(0, 120, 212, 0.05);
+            border-left: 4px solid var(--primary-color);
+            border-radius: 6px;
+        }
+
+        .job-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 4px;
+        }
+
+        .company-name {
+            font-size: 13px;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .job-meta {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .job-description {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .job-highlights {
+            font-size: 13px;
+            color: #555;
+            margin-left: 16px;
+        }
+
+        .job-highlights li {
+            margin-bottom: 6px;
+        }
+
+        /* ============================================
+           SKILLS SECTION
+           ============================================ */
+        .skills-category {
+            margin-bottom: 18px;
+        }
+
+        .category-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .skills-list {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .skill-badge {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* ============================================
+           HIGHLIGHTS SECTION
+           ============================================ */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+        }
+
+        .highlight-card {
+            background: linear-gradient(135deg, rgba(0, 120, 212, 0.1), rgba(80, 230, 255, 0.1));
+            border: 1px solid var(--glass-border);
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .highlight-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .highlight-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 6px;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            text-align: center;
+            padding: 16px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            background: rgba(240, 240, 240, 0.5);
+            color: #666;
+            font-size: 12px;
+        }
+
+        /* ============================================
+           PRINT STYLES
+           ============================================ */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .app-window {
+                max-width: 100%;
+                max-height: 100%;
+                box-shadow: none;
+                border: none;
+            }
+
+            .window-content {
+                padding: 20px;
+            }
+
+            .window-titlebar {
+                display: none;
+            }
+
+            .footer {
+                display: none;
+            }
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 768px) {
+            .window-content {
+                padding: 24px;
+            }
+
+            .resume-name {
+                font-size: 28px;
+            }
+
+            .resume-title {
+                font-size: 16px;
+            }
+
+            .section-header {
+                font-size: 14px;
+            }
+
+            .skills-list {
+                gap: 8px;
+            }
+
+            .highlights-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .resume-contact {
+                gap: 12px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .window-content {
+                padding: 16px;
+            }
+
+            .resume-header {
+                margin-bottom: 20px;
+            }
+
+            .resume-name {
+                font-size: 22px;
+            }
+
+            .resume-title {
+                font-size: 14px;
+            }
+
+            .resume-contact {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .section-header {
+                font-size: 13px;
+            }
+
+            .degree-title,
+            .job-title {
+                font-size: 14px;
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Application Window Container -->
+    <div class="app-window">
+        <!-- Windows 11 Title Bar -->
+        <div class="window-titlebar">
+            <div class="titlebar-content">
+                <i class="bi bi-file-pdf"></i>
+                <span class="titlebar-text">Resume - Bello Jawad</span>
+            </div>
+            <div class="window-controls">
+                <button class="control-btn" title="Minimize">
+                    <i class="bi bi-dash-lg"></i>
+                </button>
+                <button class="control-btn" title="Maximize">
+                    <i class="bi bi-square"></i>
+                </button>
+                <button class="control-btn close" title="Close">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Window Content -->
+        <div class="window-content">
+            <!-- Resume Header -->
+            <div class="resume-header">
+                <h1 class="resume-name">Bello Jawad</h1>
+                <p class="resume-title">Frontend Developer | Information Systems Student</p>
+                <div class="resume-contact">
+                    <div class="contact-item">
+                        <i class="bi bi-geo-alt"></i> Osun State, Nigeria
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-envelope"></i> contact@example.com
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-telephone"></i> +234 XXX XXXX XXXX
+                    </div>
+                </div>
+            </div>
+
+            <!-- Highlights Section -->
+            <div class="resume-section">
+                <div class="highlights-grid">
+                    <div class="highlight-card">
+                        <div class="highlight-number">10+</div>
+                        <div class="highlight-label">Projects Completed</div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-number">8+</div>
+                        <div class="highlight-label">Technologies Learned</div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-number">3+</div>
+                        <div class="highlight-label">Years of Learning</div>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-number">400L</div>
+                        <div class="highlight-label">Current Academic Level</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Summary -->
+            <div class="resume-section">
+                <div class="section-header">
+                    <i class="bi bi-person-badge"></i> PROFESSIONAL SUMMARY
+                </div>
+                <p style="font-size: 13px; color: #555; line-height: 1.6;">
+                    Dedicated Information Systems student with strong passion for web development and UI/UX design. Experienced in creating responsive, user-friendly interfaces using modern web technologies. Currently in Industrial Training phase, seeking opportunities to apply technical skills and grow as a Full-Stack Software Engineer.
+                </p>
+            </div>
+
+            <!-- Education Section -->
+            <div class="resume-section">
+                <div class="section-header">
+                    <i class="bi bi-mortarboard"></i> EDUCATION
+                </div>
+                <div class="education-item">
+                    <div class="degree-title">Bachelor of Technology (B.Tech) - Information Systems</div>
+                    <div class="institution">Ladoke Akintola University of Technology (LAUTECH)</div>
+                    <div class="education-meta">
+                        <span><strong>Current Level:</strong> 400 Level</span>
+                        <span><strong>Status:</strong> Industrial Training (IT)</span>
+                        <span><strong>Expected Graduation:</strong> Next Year</span>
+                    </div>
+                    <div class="education-description">
+                        <strong>Relevant Coursework:</strong> Web Development, Database Management, Systems Analysis, Software Engineering, Digital Solutions, User-Centered Design
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Section -->
+            <div class="resume-section">
+                <div class="section-header">
+                    <i class="bi bi-briefcase"></i> EXPERIENCE
+                </div>
+                <div class="experience-item">
+                    <div class="job-title">Frontend Developer (Industrial Training)</div>
+                    <div class="company-name">Current Position</div>
+                    <div class="job-meta">Ongoing | Industrial Training Phase</div>
+                    <div class="job-description">
+                        Applying technical expertise in web development and UI/UX design in a professional environment. Working on real-world projects and gaining hands-on experience with industry practices.
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <div class="job-title">Full-Stack Developer (In Progress)</div>
+                    <div class="company-name">Personal Learning Journey</div>
+                    <div class="job-meta">2023 - Present</div>
+                    <div class="job-description">
+                        Developing 10+ portfolio projects demonstrating proficiency in frontend technologies and exploring backend development. Creating responsive, accessible web applications with focus on user experience.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="resume-section">
+                <div class="section-header">
+                    <i class="bi bi-stars"></i> SKILLS
+                </div>
+
+                <div class="skills-category">
+                    <div class="category-label">Frontend Development</div>
+                    <div class="skills-list">
+                        <span class="skill-badge">HTML5</span>
+                        <span class="skill-badge">CSS3</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">Bootstrap</span>
+                        <span class="skill-badge">Responsive Design</span>
+                        <span class="skill-badge">CSS Grid</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <div class="category-label">Design & UX</div>
+                    <div class="skills-list">
+                        <span class="skill-badge">UI Design</span>
+                        <span class="skill-badge">Glassmorphism</span>
+                        <span class="skill-badge">Animations</span>
+                        <span class="skill-badge">Typography</span>
+                        <span class="skill-badge">Color Theory</span>
+                        <span class="skill-badge">Figma</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <div class="category-label">Tools & Technologies</div>
+                    <div class="skills-list">
+                        <span class="skill-badge">VS Code</span>
+                        <span class="skill-badge">Git</span>
+                        <span class="skill-badge">Chrome DevTools</span>
+                        <span class="skill-badge">Bootstrap Icons</span>
+                        <span class="skill-badge">CDN</span>
+                        <span class="skill-badge">Web Standards</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <div class="category-label">Currently Exploring</div>
+                    <div class="skills-list">
+                        <span class="skill-badge">React</span>
+                        <span class="skill-badge">TypeScript</span>
+                        <span class="skill-badge">Backend Development</span>
+                        <span class="skill-badge">Web Performance</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What I Do Section -->
+            <div class="resume-section">
+                <div class="section-header">
+                    <i class="bi bi-lightning"></i> CORE COMPETENCIES
+                </div>
+                <ul style="font-size: 13px; color: #555; margin-left: 16px; line-height: 1.8;">
+                    <li><strong>Frontend Development:</strong> Creating responsive, user-friendly web interfaces using HTML5, CSS3, and Bootstrap</li>
+                    <li><strong>UI/UX Design:</strong> Designing modern, intuitive interfaces that provide excellent user experiences</li>
+                    <li><strong>Information Systems:</strong> Understanding and implementing comprehensive IT solutions for various domains</li>
+                    <li><strong>Problem Solving:</strong> Tackling complex challenges with creative and efficient technical solutions</li>
+                </ul>
+            </div>
+
+            <!-- Academic Interests -->
+            <div class="resume-section">
+                <div class="section-header">
+                    <i class="bi bi-book"></i> INTERESTS & GOALS
+                </div>
+                <div style="font-size: 13px; color: #555; line-height: 1.6;">
+                    <p><strong>Key Interests:</strong> Web Development, Technology Innovation, Software Engineering, User Experience Design, Continuous Learning</p>
+                    <p><strong>Career Goal:</strong> To continuously learn, build impactful digital products, and grow into a highly skilled Full-Stack Software Engineer capable of creating solutions that make a meaningful difference in society.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Last Updated: June 2026 | <a href="contact.html" style="color: var(--primary-color); text-decoration: none;">Contact Me</a></p>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
