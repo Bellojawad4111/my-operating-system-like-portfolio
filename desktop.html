@@ -5,11 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OS Developer Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Bootstrap 5 (utilities used for responsive show/hide) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-..." crossorigin="anonymous" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.4/font/bootstrap-icons.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="desktop">
+    <!-- Mobile message: visible only on small screens (below lg) -->
+    <div class="mobile-message d-lg-none">
+        <div class="mobile-message__wrap d-flex align-items-center justify-content-center w-100 h-100">
+            <div class="mobile-card text-center">
+                <div class="mobile-card-icon mb-3">
+                    <i class="bi bi-desktop fs-1"></i>
+                </div>
+                <h2 class="mobile-card-title mb-2">Desktop Experience Recommended</h2>
+                <p class="mobile-card-text mb-3">This portfolio was designed to simulate a modern desktop operating system.<br><br>For the best experience, please view it on a laptop or desktop computer.<br><br>Thank you for visiting.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Desktop interface: hidden on small screens, shown on lg and larger -->
+    <div class="desktop d-none d-lg-block">
         
         <nav class="desktop-icons">
             <a href="about.html" class="icon-item">
@@ -36,7 +54,7 @@
 
     </div>
 
-    <footer class="taskbar">
+    <footer class="taskbar d-none d-lg-flex">
         <div class="taskbar-left">
             <button class="start-btn">
                 <i class="ri-apps-2-fill"></i>

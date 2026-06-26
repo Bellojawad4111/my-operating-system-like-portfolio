@@ -196,6 +196,13 @@
             }
         }
 
+        /* Clickable profile image hover effect */
+        a .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 32px rgba(0, 120, 212, 0.4);
+            filter: brightness(1.05);
+        }
+
         .profile-name {
             font-size: 32px;
             font-weight: 600;
@@ -852,12 +859,14 @@
         </div>
 
         <!-- Window Content -->
-        <!-- <div class="window-content">
-            <!- SECTION 1: PROFILE HEADER -->
+        <div class="window-content">
+            <!-- SECTION 1: PROFILE HEADER -->
              <section class="profile-header">
-                <div class="profile-image">
-                    <img src="image/mrjay2.jpeg" alt="Bello Jawad" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;" />
-                </div>
+                <a href="view-profile-image.html" style="text-decoration: none;">
+                    <div class="profile-image" style="cursor: pointer; transition: all 0.3s ease;">
+                        <img src="image/mrjay2.jpeg" alt="Bello Jawad" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;" />
+                    </div>
+                </a>
                 <h1 class="profile-name">Mr Jay</h1>
                 <p class="profile-title">Information Systems Student</p>
                 <p class="profile-subtitle">Frontend Developer | Future Full-Stack Engineer</p>
@@ -1087,10 +1096,10 @@
             <section class="cta-section">
                 <h2 class="cta-heading">Let's Build Something Amazing Together</h2>
                 <div class="cta-buttons">
-                    <a href="index.html" class="cta-btn cta-btn-primary">
+                    <a href="project.html" class="cta-btn cta-btn-primary">
                         <i class="bi bi-arrow-up-right"></i> View My Projects
                     </a>
-                    <a href="index.html" class="cta-btn cta-btn-secondary">
+                    <a href="contact.html" class="cta-btn cta-btn-secondary">
                         <i class="bi bi-envelope"></i> Contact Me
                     </a>
                 </div>

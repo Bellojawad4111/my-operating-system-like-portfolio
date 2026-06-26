@@ -184,3 +184,64 @@ body {
     font-size: 10px;
     margin-top: 1px;
 }
+
+/* ==============================
+   Mobile-only message (below lg)
+   ============================== */
+.mobile-message {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Modern gradient background behind the message */
+    background: radial-gradient(circle at 10% 20%, rgba(124, 92, 255, 0.18), transparent 24%),
+                radial-gradient(circle at 90% 10%, rgba(80, 230, 255, 0.12), transparent 22%),
+                linear-gradient(180deg, #071028 0%, #02101a 100%);
+}
+
+.mobile-message__wrap {
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+}
+
+.mobile-card {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 28px 24px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 12px 40px rgba(2, 6, 23, 0.6);
+    color: #ffffff;
+}
+
+.mobile-card-icon i {
+    color: #cfe9ff;
+}
+
+.mobile-card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #e7f3ff;
+}
+
+.mobile-card-text {
+    color: rgba(231, 243, 255, 0.85);
+    line-height: 1.5;
+    font-size: 0.98rem;
+}
+
+/* Ensure mobile-message is completely hidden on lg and above via Bootstrap utility, but add extra safety */
+@media (min-width: 992px) {
+    .mobile-message { display: none !important; }
+}
+
+/* Extra: make sure desktop is visible on large screens only */
+@media (max-width: 991.98px) {
+    .desktop, .taskbar { display: none !important; }
+}
